@@ -68,7 +68,7 @@ internal class Program
             replaceNumbersToWords(input);
             Console.ReadKey();
             findLongestWord(input);
-            Console.ReadKey();
+            
            
 
             //string searchNumber = str[index];
