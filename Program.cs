@@ -8,20 +8,18 @@ internal class Program
     private static void Main(string[] args)
     {
         //Считать строку текста из консоли(продвинутое задание: из файла).
-
+        //test
         //string inputData = "Hello worldf!";
         //string[] words = inputData.Split(',', ' ', '-', ';', '!', '?', ':');
         ////int max = words.Select(word => word.Length).Max();
 
 
 
-        {
-           
+        {       
             Console.Write("Введите строку: ");
             string input = Console.ReadLine();
             string[] str = input.Split(' ', ',', '.', ':', '!', '?', ';');
             string[] num1 = input.Split( '1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
-
 
             //1
             int maxlen = 0, index = 0;
