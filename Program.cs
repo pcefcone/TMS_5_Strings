@@ -2,11 +2,57 @@
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Linq;
+using System;
 
 internal class Program
 {
+    public static void replaceNumbersToWords(string input)
+    {
+        string input1 = input
+            .Replace("1", "ONE")
+            .Replace("2", "TWO")
+            .Replace("3", "THREE")
+            .Replace("4", "FOUR")
+            .Replace("5", "FIVE")
+            .Replace("6", "SIX")
+            .Replace("7", "SEVEN")
+            .Replace("8", "EIGHT")
+            .Replace("9", "NINE")
+            .Replace("0", "ZERO");
+                              
+
+        Console.WriteLine(input1);
+    }
+    public static void findLongestWord(string input)
+    {
+        string[] exclusionСharacters = input.Split(' ', ',', '.', ':', '!', '?', ';');
+        int maxlen = 0, index = 0;
+        for (int i = 0; i < exclusionСharacters.Length; i++)
+        {
+            if (exclusionСharacters[i].Length > maxlen)
+            {
+                maxlen = exclusionСharacters[i].Length;
+                index = i;
+                //bool isCont = input.Contains(str[index]);
+            }
+        }
+        int gg = 0;
+
+        Console.Write("Самое длинное слово: {0}", exclusionСharacters[index]);
+        string searchWord = exclusionСharacters[index];
+        char[] separators = [' ', ',', '.', ':', '!', '?', ';'];
+        string[] source = input.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+        var matchQuery = from word in source
+                         where word.Equals(searchWord, StringComparison.InvariantCultureIgnoreCase)
+                         select word;
+
+        int wordCount = matchQuery.Count();
+        Console.WriteLine($"\nСлово {searchWord} встречается {wordCount} раз");
+    }
     private static void Main(string[] args)
     {
+            //string[] num1 = input.Split( '1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
+            //char[] num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
         //Считать строку текста из консоли(продвинутое задание: из файла).
         //test
         //string inputData = "Hello worldf!";
@@ -18,40 +64,14 @@ internal class Program
         {       
             Console.Write("Введите строку: ");
             string input = Console.ReadLine();
-            string[] str = input.Split(' ', ',', '.', ':', '!', '?', ';');
-            string[] num1 = input.Split( '1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
-
-            //1
-            int maxlen = 0, index = 0;
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (str[i].Length > maxlen)
-                {
-                    maxlen = str[i].Length;
-                    index = i;
-                    //bool isCont = input.Contains(str[index]);
-                }
-            }
-            int gg = 0;
-            
-            Console.Write("Самое длинное слово: {0}", str[index]);
-
-            
-            string searchWord =  str[index];
-            char[] separators = [' ', ',', '.', ':', '!', '?', ';'];
-            string[] source = input.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-            var matchQuery = from word in source
-                             where word.Equals(searchWord, StringComparison.InvariantCultureIgnoreCase)
-                             select word;
-            
-            int wordCount = matchQuery.Count();
-            Console.WriteLine($"\nСлово {searchWord} встречается {wordCount} раз");
-            //1
-
+            Console.ReadKey();
+            replaceNumbersToWords(input);
+            Console.ReadKey();
+            findLongestWord(input);
+            Console.ReadKey();
            
 
             //string searchNumber = str[index];
-            //char[] num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
             //string[] source2 = input.Split(num, StringSplitOptions.RemoveEmptyEntries);
             //var matchNums = from word in source2
             //                  where word.Equals(num, StringComparison.InvariantCultureIgnoreCase)
